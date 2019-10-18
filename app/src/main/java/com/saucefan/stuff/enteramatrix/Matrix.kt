@@ -1,5 +1,7 @@
 package com.saucefan.stuff.enteramatrix
 
+import kotlin.random.Random
+
 class Matrix (var height:Int,var width:Int) {
     var arr = Array(height) { Array(this.width) { 1 } }
 
@@ -26,7 +28,7 @@ class Matrix (var height:Int,var width:Int) {
                     newArr[h][w] = arr[h][w]
                 }
                 else {
-                    newArr[h][w] =1
+                    newArr[h][w] = Random.nextInt(9)
                 }
             }
         }
@@ -58,7 +60,16 @@ operator fun Matrix.get(ix:Int,iy:Int):Int {
 }
 
 
-
+infix operator fun Matrix.rem(int:Int): Int {
+    var total = 1
+    for (h in 0 until this.sizeHeight() - 1) {
+        for (w in 0 until this.sizeWidth() - 1) {
+            total = this[h, w] * total
+            total = this[h + 1, w + 1] * total
+        }
+    }
+return total
+}
 
 infix operator fun Matrix.times(int:Int): Int {
     var total = 1

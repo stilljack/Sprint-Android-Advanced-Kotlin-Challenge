@@ -5,8 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+   >
+    <TextView
+        android:id="@+id/tv_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="default"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,31 +30,24 @@
         <TableRow
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             >
 
-<TextView
-    android:id="@+id/tv_answer_one"
-    android:layout_width="wrap_content"
-    android:layout_height="90sp"
-    android:layout_column="1"
-    android:gravity="center"
-    android:textSize="40sp"
-    android:text="product of all"
-    />
-        </TableRow>
-        <TableRow
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            >
+
             <EditText
-                android:id="@+id/et_answer_one"
-                android:layout_width="wrap_content"
+                android:id="@+id/et_one"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="24"
+                />
+            <EditText
+                android:id="@+id/et_two"
+                android:layout_width="90sp"
                 android:layout_height="90sp"
                 android:layout_column="1"
                 android:gravity="center"
@@ -56,31 +59,24 @@
         <TableRow
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             >
 
-            <TextView
-                android:id="@+id/tv_answer_two"
-                android:layout_width="wrap_content"
+
+            <EditText
+                android:id="@+id/et_three"
+                android:layout_width="90sp"
                 android:layout_height="90sp"
                 android:layout_column="1"
                 android:gravity="center"
                 android:textSize="40sp"
-                android:text="diagonal product"
+                android:text="24"
                 />
-        </TableRow>
-        <TableRow
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            >
             <EditText
-                android:id="@+id/et_answer_two"
-                android:layout_width="wrap_content"
+                android:id="@+id/et_four"
+                android:layout_width="90sp"
                 android:layout_height="90sp"
                 android:layout_column="1"
                 android:gravity="center"

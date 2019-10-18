@@ -8,8 +8,8 @@ import android.content.Context
 }*/
 
 
-
-
+const val EXTRA_STRING = "string"
+const val EXTRA_MATRIX = "matrix"
 
 /*
 
