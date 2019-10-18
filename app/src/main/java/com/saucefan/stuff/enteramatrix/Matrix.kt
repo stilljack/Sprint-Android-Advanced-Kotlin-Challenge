@@ -1,11 +1,8 @@
 package com.saucefan.stuff.enteramatrix
 
 class Matrix (var height:Int,var width:Int) {
-    var arr = Array(height) { Array(this.width) { 0 } }
+    var arr = Array(height) { Array(this.width) { 1 } }
 
-
-
-    //height and width alterations
     fun sHeight (x:Int) {
         this.height =x
         fixArr ()
@@ -13,14 +10,40 @@ class Matrix (var height:Int,var width:Int) {
     fun sWidth (x:Int) {
         this.width =x
         fixArr ()
+
+
     }
     private fun fixArr () {
-        arr = Array(height) { Array(this.width) { 0 } }
+//make a new array
+        //loop through the new array
+        //if the current position in the new array should exist (i.e. current value of x and y or height and width or h and w
+        // is less than the size of the old array or the arrays within that array (i.e array[x].size)
+
+        var newArr = Array(height) { Array(this.width) { 1 } }
+        for (h in 0 until arr.size) {
+            for (w in 0 until arr[0].size) {
+                if (h<=arr.size && w<=arr[0].size) {
+                    newArr[h][w] = arr[h][w]
+                }
+                else {
+                    newArr[h][w] =1
+                }
+            }
+        }
+        arr=newArr
+
     }
 
  fun size ():Int {
      return arr.size
  }
+
+    fun sizeHeight ():Int {
+        return arr.size
+    }
+    fun sizeWidth ():Int {
+        return arr[0].size
+    }
 
 
 
@@ -36,11 +59,12 @@ operator fun Matrix.get(ix:Int,iy:Int):Int {
 
 
 
+
 infix operator fun Matrix.times(int:Int): Int {
     var total = 1
-    for (i in 0 until this.size()) {
-        for (j in 0 until this.size()){
-            total = this[i, i] *total
+    for (h in 0 until this.sizeHeight()) {
+        for (w in 0 until this.sizeWidth()){
+            total = this[h, w] *total
     }
 }
 

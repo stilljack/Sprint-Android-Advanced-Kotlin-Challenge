@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         val ourMatrix:Matrix = Matrix(2,2)
         for (i in 0 until matrix.size) {
             for (j in 0 until matrix.size) {
-                val newValue =(i + j)
+                val newValue =(i + j+1)
                 ourMatrix.set(i,j,newValue)
             }
         }
@@ -58,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 
             Snackbar.make(view, "${ourMatrix*3}", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
+
+            ourMatrix.sWidth(3)
+            ourMatrix.sHeight(5)
         }
     }
 
