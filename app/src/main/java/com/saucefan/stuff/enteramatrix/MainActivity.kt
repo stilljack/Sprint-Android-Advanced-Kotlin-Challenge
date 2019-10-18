@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.activity_main.*
     7 8
 *  yikes
 *
-*
+* 2. matrix class is serialiazble now so we can stick it in a bundlesss
 *
 *
 *
@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
         this.findViewById<ViewGroup>(R.id.first)
     }
 
-    private val containerTwo: ViewGroup by lazy {
+   /* private val containerTwo: ViewGroup by lazy {
         this.findViewById<ViewGroup>(R.id.second)
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,12 +55,14 @@ class MainActivity : AppCompatActivity() {
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
         if(!router.hasRootController()) {
-            router.setRoot(RouterTransaction.with(QuestionController("string from main")))
+            router.setRoot(RouterTransaction.with(QuestionController("matrix one")))
         }
+/*
         routerTwo = Conductor.attachRouter(this, containerTwo, savedInstanceState)
         if(!routerTwo.hasRootController()) {
             routerTwo.setRoot(RouterTransaction.with(QuestionController("a different string")))
         }
+*/
 
 
 
@@ -112,6 +114,12 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onBackPressed() {
+        if(!router.handleBack()) {
+            super.onBackPressed()
         }
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.ControllerChangeType
@@ -59,8 +60,10 @@ class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
     }
     fun etMatrix(view:View): Matrix {
         val matrix = Matrix(2, 2)
-
-        matrix[0, 0] = 7
+        matrix[0, 0] = view.findViewById<EditText>(R.id.et_one).text.toString().toInt()
+        matrix[0, 1] = view.findViewById<EditText>(R.id.et_two).text.toString().toInt()
+        matrix[1, 0] = view.findViewById<EditText>(R.id.et_three).text.toString().toInt()
+        matrix[1, 1] = view.findViewById<EditText>(R.id.et_four).text.toString().toInt()
         return matrix
     }
 

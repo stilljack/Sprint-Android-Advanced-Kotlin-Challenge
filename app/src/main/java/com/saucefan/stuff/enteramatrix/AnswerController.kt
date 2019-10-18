@@ -23,8 +23,14 @@ class AnswerController (bundle: Bundle) : ViewModelController(bundle) {
         putSerializable(EXTRA_MATRIX, communicatedMatrix)
     })
 
+    //this feels like a whack way to do it but whatever
     val communicatedMatrix by lazy {
-        args.get(EXTRA_MATRIX) as Matrix
+        if ((args.get(EXTRA_MATRIX) != null)) {
+            args.get(EXTRA_MATRIX) as Matrix
+            }
+        else {
+            Matrix(1,1)
+        }
     }
 
 
@@ -33,7 +39,7 @@ class AnswerController (bundle: Bundle) : ViewModelController(bundle) {
         val view = inflater.inflate(R.layout.answer, container, false)
 
         (view.findViewById(R.id.tv_answer_one) as TextView).text =
-            communicatedMatrix.get(0,0).toString()
+            (communicatedMatrix * 1).toString()
         return view
     }
 
