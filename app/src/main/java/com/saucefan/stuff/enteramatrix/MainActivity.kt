@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 *
 *  0. so no data has to go backwards,
 *       we'll do livedata anyway.
-*
+*   1. so lets overload first
 *
 *
 *
@@ -33,9 +33,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+   val arr = arrayOf(arrayOf(1,2))
+        var matrix: Array<IntArray> = Array(2) { IntArray(2) }
+        for (i in 0 until matrix.size) {
+            for (j in 0 until matrix.size) {
+                matrix[i][j] =  i + j
+            }
+        }
+        for (i in 0 until matrix.size) {
+            for (j in 0 until matrix.size) {
+                println("${matrix[i][j]}  -- ${matrix[i][i]} )")
+            }
+        }
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+
+            Snackbar.make(view, "${matrix[1][0]*1}", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
     }
