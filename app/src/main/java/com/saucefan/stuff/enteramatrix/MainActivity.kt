@@ -35,14 +35,16 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
    val arr = arrayOf(arrayOf(1,2))
         var matrix: Array<IntArray> = Array(2) { IntArray(2) }
+        val ourMatrix:Matrix = Matrix(2,2)
         for (i in 0 until matrix.size) {
             for (j in 0 until matrix.size) {
-                matrix[i][j] =  i + j
+                val newValue =(i + j)
+                ourMatrix.set(i,j,newValue)
             }
         }
         for (i in 0 until matrix.size) {
             for (j in 0 until matrix.size) {
-                println("${matrix[i][j]}  -- ${matrix[i][i]} )")
+                println("${ourMatrix.get(i,j)}  )")
             }
         }
 
