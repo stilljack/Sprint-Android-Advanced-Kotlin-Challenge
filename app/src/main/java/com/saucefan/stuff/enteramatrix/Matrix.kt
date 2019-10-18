@@ -4,7 +4,7 @@ import java.io.Serializable
 import kotlin.random.Random
 
 class Matrix (var height:Int,var width:Int) :Serializable {
-    var arr = Array(height) { Array(this.width) { 1 } }
+    var arr = Array(height) { Array(this.width) { 0 } }
 
     fun sHeight (x:Int) {
         this.height =x
@@ -71,6 +71,9 @@ infix operator fun Matrix.rem(int:Int): Int {
             total = this[h, w] * total
             total = this[h + 1, w + 1] * total
         }
+    }
+    if (total>=1) {
+        total -=  1
     }
 return total
 }
