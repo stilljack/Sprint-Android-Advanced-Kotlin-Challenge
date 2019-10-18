@@ -76,18 +76,19 @@ return total
 }
 
 infix operator fun Matrix.times(matrix: Matrix): Matrix {
-    val r1 =this.sizeHeight()
-    val c2  = this.sizeWidth()
-    val c1 = matrix.sizeHeight()
-    val total =  Matrix(r1,c2)
+    val h1 =this.sizeHeight()
+    var h2 = matrix.sizeWidth()
+    val w1  = this.sizeWidth()
+    val w2 = matrix.sizeHeight()
 
 
-
+    val total =  Matrix(h1,w2)
 
  // total[0,0] = (this[0,0], * matrix[0,0]) + ( * matrix[1,0]) + (this[0,0] * matrix[0,0]) + (this[0,0] * matrix[1,0])
-    for (i in 0 until r1) {
-        for (j in 0 until c2) {
-            for (k in 0 until c1) {
+    //this will only work on rectangular matrixicieiscies  where h1=h2
+    for (i in 0 until h1) {
+        for (j in 0 until w1) {
+            for (k in 0 until w2) {
                 total[i,j] += (this[i,k] * matrix[k,j])
             }
         }

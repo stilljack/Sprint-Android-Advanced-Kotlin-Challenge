@@ -17,7 +17,6 @@ class AnswerController (bundle: Bundle) : ViewModelController(bundle) {
     }
 
 
-    var communicatedStringLate: String = ""
 
     constructor(communicatedMatrix: Matrix? = null,communicatedMatrix2: Matrix? = null) : this(Bundle().apply {
         putSerializable(EXTRA_MATRIX, communicatedMatrix)

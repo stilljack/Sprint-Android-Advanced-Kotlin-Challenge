@@ -14,7 +14,7 @@ import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
 import work.beltran.conductorviewmodel.ViewModelController
 
 
-class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
+class StretchController (bundle: Bundle) : ViewModelController(bundle) {
 
 
     companion object {
@@ -24,23 +24,29 @@ class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
 
     var communicatedStringLate: String = ""
 
-    constructor(communicatedString: String? = null) : this(Bundle().apply {
-        putString(EXTRA_STRING, communicatedString)
+    constructor(communicatedMatrix: Matrix? = null,communicatedMatrix2: Matrix? = null) : this(Bundle().apply {
+        putSerializable(EXTRA_MATRIX, communicatedMatrix)
     })
 
-    val communicatedString by lazy {
-        args.getString(EXTRA_STRING)
+    //this feels like a whack way to do it but whatever
+    val communicatedMatrix by lazy {
+        if ((args.get(EXTRA_MATRIX) != null)) {
+            args.get(EXTRA_MATRIX) as Matrix
+        }
+        else {
+            Matrix(1,1)
+        }
     }
-
 
     val horizontalChangeHandler = HorizontalChangeHandler()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-        val view = inflater.inflate(R.layout.question, container, false)
+        val view = inflater.inflate(R.layout.stretch, container, false)
 
-        (view.findViewById(R.id.tv_one) as TextView).text =
-            communicatedString
-        val btnView = view.findViewById<Button>(R.id.btn_question)
-        btnView?.text="2 ChildController()"
+        (view.findViewById(R.id.tv_stretch_one) as TextView).text =
+            "matrix resize"
+        (view.findViewById(R.id.tv_stretch_two) as TextView).text =
+            "2"
+        val btnView = view.findViewById<Button>(R.id.btn_stretch)
         btnView?.setOnClickListener {
             router.pushController(RouterTransaction.with(AnswerController(Bundle().apply {
                 this.putSerializable(EXTRA_MATRIX,etMatrix(view))
@@ -72,10 +78,7 @@ class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
         matrix[1, 1] = view.findViewById<EditText>(R.id.et_eight).text.toString().toInt()
         return matrix
     }
-    fun getMessage(string: String?): String? {
-        return communicatedString
-    }
-
+ 
     protected override fun onChangeEnded(
         changeHandler: ControllerChangeHandler,
         changeType: ControllerChangeType
