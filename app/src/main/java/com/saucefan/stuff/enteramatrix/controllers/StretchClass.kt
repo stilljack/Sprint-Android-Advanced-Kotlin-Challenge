@@ -1,4 +1,4 @@
-package com.saucefan.stuff.enteramatrix
+package com.saucefan.stuff.enteramatrix.controllers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +11,11 @@ import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.ControllerChangeType
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
+import com.saucefan.stuff.enteramatrix.*
 import work.beltran.conductorviewmodel.ViewModelController
 
 
-class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
+class StretchController (bundle: Bundle) : ViewModelController(bundle) {
 
 
     companion object {
@@ -22,59 +23,53 @@ class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
     }
 
 
+
     var communicatedStringLate: String = ""
 
-    constructor(communicatedString: String? = null) : this(Bundle().apply {
-        putString(EXTRA_STRING, communicatedString)
+    constructor(communicatedMatrix: Matrix? = null, communicatedMatrix2: Matrix? = null) : this(Bundle().apply {
+        putSerializable(EXTRA_MATRIX, communicatedMatrix)
     })
 
-    val communicatedString by lazy {
-        args.getString(EXTRA_STRING)
+    //this feels like a whack way to do it but whatever
+    val communicatedMatrix by lazy {
+        if ((args.get(EXTRA_MATRIX) != null)) {
+            args.get(EXTRA_MATRIX) as Matrix
+        }
+        else {
+            Matrix(1, 1)
+        }
     }
-
 
     val horizontalChangeHandler = HorizontalChangeHandler()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-        val view = inflater.inflate(R.layout.question, container, false)
+        val view = inflater.inflate(R.layout.stretch, container, false)
+//(view.findViewById(R.id.tv_stretch_two) as TextView)
+        val txtview =
+            view?.findViewById(R.id.tv_stretch_one) as TextView
 
-        (view.findViewById(R.id.tv_one) as TextView).text =
-            communicatedString
-        val btnView = view.findViewById<Button>(R.id.btn_question)
-        btnView?.text="2 ChildController()"
+        val txtview2 =
+            view?.findViewById(R.id.tv_stretch_two) as TextView
+
+        val editview =
+            view?.findViewById(R.id.et_stretch) as EditText
+        txtview.text =
+            "matrix resize"
+        txtview2.text =
+            "matrix height = ${communicatedMatrix.sizeHeight()}\n matrix width = ${communicatedMatrix.sizeWidth()}"
+        val btnView = view.findViewById<Button>(R.id.btn_stretch)
         btnView?.setOnClickListener {
-            router.pushController(RouterTransaction.with(AnswerController(Bundle().apply {
-                this.putSerializable(EXTRA_MATRIX,etMatrix(view))
-                this.putSerializable(EXTRA_MATRIX_TWO,etMatrix2(view))
-            }
-            ))
-                .pushChangeHandler(HorizontalChangeHandler())
-                .popChangeHandler(HorizontalChangeHandler())
-            )
-        }
+            communicatedMatrix.sHeight(editview.text.toString().toInt())
+            communicatedMatrix.sWidth(editview.text.toString().toInt())
+            txtview2.text =
+                "matrix height = ${communicatedMatrix.sizeHeight()}\n matrix width = ${communicatedMatrix.sizeWidth()}"
 
+
+        }
 
 
         return view
     }
-    fun etMatrix(view:View): Matrix {
-        val matrix = Matrix(2, 2)
-        matrix[0, 0] = view.findViewById<EditText>(R.id.et_one).text.toString().toInt()
-        matrix[0, 1] = view.findViewById<EditText>(R.id.et_two).text.toString().toInt()
-        matrix[1, 0] = view.findViewById<EditText>(R.id.et_three).text.toString().toInt()
-        matrix[1, 1] = view.findViewById<EditText>(R.id.et_four).text.toString().toInt()
-        return matrix
-    }
-    fun etMatrix2(view:View): Matrix {
-        val matrix = Matrix(2, 2)
-        matrix[0, 0] = view.findViewById<EditText>(R.id.et_five).text.toString().toInt()
-        matrix[0, 1] = view.findViewById<EditText>(R.id.et_six).text.toString().toInt()
-        matrix[1, 0] = view.findViewById<EditText>(R.id.et_seven).text.toString().toInt()
-        matrix[1, 1] = view.findViewById<EditText>(R.id.et_eight).text.toString().toInt()
-        return matrix
-    }
-    fun getMessage(string: String?): String? {
-        return communicatedString
-    }
+
 
     protected override fun onChangeEnded(
         changeHandler: ControllerChangeHandler,

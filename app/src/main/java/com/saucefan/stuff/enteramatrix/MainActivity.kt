@@ -1,7 +1,6 @@
 package com.saucefan.stuff.enteramatrix
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -9,6 +8,7 @@ import android.view.ViewGroup
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
+import com.saucefan.stuff.enteramatrix.controllers.QuestionController
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -84,6 +84,7 @@ Allow users to change the size of the matrices in the UI
 * I don't understand the question and I refuse to answer it
 *
 *
+*  -- no really tho now you can
 *
 *
  */
@@ -108,7 +109,11 @@ class MainActivity : AppCompatActivity() {
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
         if(!router.hasRootController()) {
-            router.setRoot(RouterTransaction.with(QuestionController("matrix one")))
+            router.setRoot(RouterTransaction.with(
+                QuestionController(
+                    "matrix one"
+                )
+            ))
             router.setPopsLastView(true)
         }
 /*
