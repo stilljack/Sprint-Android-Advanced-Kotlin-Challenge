@@ -44,7 +44,7 @@ class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
         btnView?.setOnClickListener {
             router.pushController(RouterTransaction.with(AnswerController(Bundle().apply {
                 this.putSerializable(EXTRA_MATRIX,etMatrix(view))
-
+                this.putSerializable(EXTRA_MATRIX_TWO,etMatrix2(view))
             }
 
 
@@ -66,7 +66,14 @@ class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
         matrix[1, 1] = view.findViewById<EditText>(R.id.et_four).text.toString().toInt()
         return matrix
     }
-
+    fun etMatrix2(view:View): Matrix {
+        val matrix = Matrix(2, 2)
+        matrix[0, 0] = view.findViewById<EditText>(R.id.et_five).text.toString().toInt()
+        matrix[0, 1] = view.findViewById<EditText>(R.id.et_six).text.toString().toInt()
+        matrix[1, 0] = view.findViewById<EditText>(R.id.et_seven).text.toString().toInt()
+        matrix[1, 1] = view.findViewById<EditText>(R.id.et_eight).text.toString().toInt()
+        return matrix
+    }
     fun getMessage(string: String?): String? {
         return communicatedString
     }

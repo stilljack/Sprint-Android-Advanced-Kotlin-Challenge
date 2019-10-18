@@ -48,7 +48,10 @@ class Matrix (var height:Int,var width:Int) :Serializable {
         return arr[0].size
     }
 
+    override fun toString(): String {
+        return arr.toString()
 
+    }
 
 
 }

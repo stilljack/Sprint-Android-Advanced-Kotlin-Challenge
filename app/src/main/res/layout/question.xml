@@ -145,7 +145,7 @@
                 android:text="7"
                 />
             <EditText
-                android:id="@+id/et_8"
+                android:id="@+id/et_eight"
                 android:layout_width="90sp"
                 android:layout_height="90sp"
                 android:layout_column="1"

@@ -19,7 +19,7 @@ class AnswerController (bundle: Bundle) : ViewModelController(bundle) {
 
     var communicatedStringLate: String = ""
 
-    constructor(communicatedMatrix: Matrix? = null) : this(Bundle().apply {
+    constructor(communicatedMatrix: Matrix? = null,communicatedMatrix2: Matrix? = null) : this(Bundle().apply {
         putSerializable(EXTRA_MATRIX, communicatedMatrix)
     })
 
@@ -32,14 +32,35 @@ class AnswerController (bundle: Bundle) : ViewModelController(bundle) {
             Matrix(1,1)
         }
     }
+    val communicatedMatrix2 by lazy {
+        if ((args.get(EXTRA_MATRIX_TWO) != null)) {
+            args.get(EXTRA_MATRIX_TWO) as Matrix
+        }
+        else {
+            Matrix(1,1)
+        }
+    }
 
 
     val horizontalChangeHandler = HorizontalChangeHandler()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         val view = inflater.inflate(R.layout.answer, container, false)
-
+        val answerMatrix = (communicatedMatrix * communicatedMatrix2)
         (view.findViewById(R.id.tv_answer_one) as TextView).text =
-            (communicatedMatrix * 1).toString()
+            " product  "
+        (view.findViewById(R.id.et_answer_one) as TextView).text =
+            answerMatrix[0,0].toString()
+        (view.findViewById(R.id.et_answer_two) as TextView).text =
+            answerMatrix[0,1].toString()
+        (view.findViewById(R.id.et_answer_three) as TextView).text =
+            answerMatrix[1,0].toString()
+        (view.findViewById(R.id.et_answer_four) as TextView).text =
+            answerMatrix[1,1].toString()
+
+
+
+
+
         return view
     }
 
