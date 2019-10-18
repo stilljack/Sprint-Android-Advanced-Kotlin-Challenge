@@ -4,18 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.ControllerChangeType
-import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler
 import work.beltran.conductorviewmodel.ViewModelController
 
 
-class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
-
-
+class AnswerController (bundle: Bundle) : ViewModelController(bundle) {
     companion object {
         private const val TAG = "MyViewModelController"
     }
@@ -23,50 +19,24 @@ class QuestionController (bundle: Bundle) : ViewModelController(bundle) {
 
     var communicatedStringLate: String = ""
 
-    constructor(communicatedString: String? = null) : this(Bundle().apply {
-        putString(EXTRA_STRING, communicatedString)
+    constructor(communicatedMatrix: Matrix? = null) : this(Bundle().apply {
+        putSerializable(EXTRA_MATRIX, communicatedMatrix)
     })
 
-    val communicatedString by lazy {
-        args.getString(EXTRA_STRING)
+    val communicatedMatrix by lazy {
+        args.get(EXTRA_MATRIX) as Matrix
     }
 
 
     val horizontalChangeHandler = HorizontalChangeHandler()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
-        val view = inflater.inflate(R.layout.question, container, false)
+        val view = inflater.inflate(R.layout.answer, container, false)
 
-        (view.findViewById(R.id.tv_one) as TextView).text =
-            communicatedString
-        val btnView = view.findViewById<Button>(R.id.btn_question)
-        btnView?.text="2 ChildController()"
-        btnView?.setOnClickListener {
-            router.pushController(RouterTransaction.with(AnswerController(Bundle().apply {
-                this.putSerializable(EXTRA_MATRIX,etMatrix(view))
-
-            }
-
-
-            ))
-                .pushChangeHandler(HorizontalChangeHandler())
-                .popChangeHandler(HorizontalChangeHandler())
-            )
-        }
-
-
-
+        (view.findViewById(R.id.tv_answer_one) as TextView).text =
+            communicatedMatrix.get(0,0).toString()
         return view
     }
-    fun etMatrix(view:View): Matrix {
-        val matrix = Matrix(2, 2)
 
-        matrix[0, 0] = 7
-        return matrix
-    }
-
-    fun getMessage(string: String?): String? {
-        return communicatedString
-    }
 
     protected override fun onChangeEnded(
         changeHandler: ControllerChangeHandler,

@@ -1,8 +1,9 @@
 package com.saucefan.stuff.enteramatrix
 
+import java.io.Serializable
 import kotlin.random.Random
 
-class Matrix (var height:Int,var width:Int) {
+class Matrix (var height:Int,var width:Int) :Serializable {
     var arr = Array(height) { Array(this.width) { 1 } }
 
     fun sHeight (x:Int) {

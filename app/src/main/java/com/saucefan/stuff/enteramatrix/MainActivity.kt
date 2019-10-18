@@ -55,11 +55,11 @@ class MainActivity : AppCompatActivity() {
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
         if(!router.hasRootController()) {
-            router.setRoot(RouterTransaction.with(QuestionController("Hello Conductor!1")))
+            router.setRoot(RouterTransaction.with(QuestionController("string from main")))
         }
         routerTwo = Conductor.attachRouter(this, containerTwo, savedInstanceState)
         if(!routerTwo.hasRootController()) {
-            routerTwo.setRoot(RouterTransaction.with(QuestionController("Hello Conductor!2")))
+            routerTwo.setRoot(RouterTransaction.with(QuestionController("a different string")))
         }
 
 
@@ -89,14 +89,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        fab.setOnClickListener { view ->
+  /*      fab.setOnClickListener { view ->
 
             Snackbar.make(view, "${ourMatrix%3}", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
 
             ourMatrix.sWidth(3)
             ourMatrix.sHeight(5)
-        }
+        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

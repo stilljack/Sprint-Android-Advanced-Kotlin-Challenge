@@ -86,4 +86,12 @@
 
         </TableRow>
     </TableLayout>
+    <Button
+        android:id="@+id/btn_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text ="get answer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
