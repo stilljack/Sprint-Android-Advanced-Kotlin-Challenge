@@ -8,7 +8,7 @@ import android.content.Context
 }*/
 
 
-operator fun Matrix.times(matrix: Matrix): Int =  0
+
 
 
 /*

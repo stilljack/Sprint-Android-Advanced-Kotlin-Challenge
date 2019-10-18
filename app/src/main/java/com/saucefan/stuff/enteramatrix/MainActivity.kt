@@ -14,10 +14,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 *  0. so no data has to go backwards,
 *       we'll do livedata anyway.
 *   1. so lets overload first
+*           todo: figure out why set kinda sucks
 *
-*
-*
-*
+*   WTF... these are the number presented in the example,
+*   11 2
+    32 43		69  82
+
+    5 6
+			 461 436
+    7 8
+*  yikes
 *
 *
 *
@@ -50,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener { view ->
 
-            Snackbar.make(view, "${matrix[1][0]*1}", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "${ourMatrix*3}", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
     }
