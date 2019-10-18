@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
         for (i in 0 until matrix.size) {
             for (j in 0 until matrix.size) {
-                println("${ourMatrix.get(i,j)}  )")
+                println("${ourMatrix[i,j]}  )")
             }
         }
 

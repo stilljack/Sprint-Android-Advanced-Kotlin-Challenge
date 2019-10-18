@@ -9,10 +9,10 @@ class Matrix (val height:Int,val width:Int) {
 
 }
 
-fun Matrix.get(ix:Int,iy:Int):Int {
+operator fun Matrix.get(ix:Int,iy:Int):Int {
     return this.arr[ix][iy]
 }
 
-fun Matrix.set(ix:Int,iy:Int,int:Int){
+operator fun Matrix.set(ix:Int,iy:Int,int:Int){
     this.arr[ix][iy] = int
 }
