@@ -64,18 +64,30 @@ operator fun Matrix.get(ix:Int,iy:Int):Int {
 }
 
 
-infix operator fun Matrix.rem(int:Int): Int {
-    var total = 1
-    for (h in 0 until this.sizeHeight() - 1) {
-        for (w in 0 until this.sizeWidth() - 1) {
-            total = this[h, w] * total
-            total = this[h + 1, w + 1] * total
+infix operator fun Matrix.rem(matrix: Matrix): Matrix {
+    val h1 =this.sizeHeight()
+    val h2 = matrix.sizeWidth()
+    val w1  = this.sizeWidth()
+    var w2 = matrix.sizeHeight()
+
+    if (h2>w2){
+        w2=h2
+    }
+
+    val total =  Matrix(h1,w2)
+
+    // total[0,0] = (this[0,0], * matrix[0,0]) + ( * matrix[1,0]) + (this[0,0] * matrix[0,0]) + (this[0,0] * matrix[1,0])
+    //this will only work on rectangular matrixicieiscies? wait... a square is a rectangle.
+    //hell if I know. good luck
+    for (i in 0 until h1) {
+        for (j in 0 until w1) {
+            for (k in 0 until w2) {
+                total[i,j] += (this[i,k] * matrix[k,j])
+            }
         }
     }
-    if (total>=1) {
-        total -=  1
-    }
-return total
+
+    return total
 }
 
 infix operator fun Matrix.times(matrix: Matrix): Matrix {
@@ -88,7 +100,8 @@ infix operator fun Matrix.times(matrix: Matrix): Matrix {
     val total =  Matrix(h1,w2)
 
  // total[0,0] = (this[0,0], * matrix[0,0]) + ( * matrix[1,0]) + (this[0,0] * matrix[0,0]) + (this[0,0] * matrix[1,0])
-    //this will only work on rectangular matrixicieiscies  where h1=h2
+    //this will only work on rectangular matrixicieiscies? wait... a square is a rectangle.
+            //hell if I know
     for (i in 0 until h1) {
         for (j in 0 until w1) {
             for (k in 0 until w2) {

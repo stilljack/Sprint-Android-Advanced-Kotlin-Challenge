@@ -60,6 +60,19 @@ class StretchController (bundle: Bundle) : ViewModelController(bundle) {
         btnView?.setOnClickListener {
             communicatedMatrix.sHeight(editview.text.toString().toInt())
             communicatedMatrix.sWidth(editview.text.toString().toInt())
+            var final =""
+            for (h in 0 until communicatedMatrix.sizeHeight()) {
+                for (w in 0 until communicatedMatrix.sizeWidth()) {
+                        final += "${communicatedMatrix[h,w]}"
+                    if (w < communicatedMatrix.sizeWidth()-1) {
+                        final += "-"
+                    }
+
+                }
+                 final+="\n"
+            }
+            txtview.text =
+                final
             txtview2.text =
                 "matrix height = ${communicatedMatrix.sizeHeight()}\n matrix width = ${communicatedMatrix.sizeWidth()}"
 
