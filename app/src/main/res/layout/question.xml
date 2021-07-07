@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+   >
+    <TextView
+        android:id="@+id/tv_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="matrix one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/transition_layout_save"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <TableRow
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+
+            <EditText
+                android:id="@+id/et_one"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="1"
+                />
+            <EditText
+                android:id="@+id/et_two"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="2"
+                />
+
+        </TableRow>
+        <TableRow
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+
+            <EditText
+                android:id="@+id/et_three"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="3"
+                />
+            <EditText
+                android:id="@+id/et_four"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="4"
+                />
+
+        </TableRow>
+
+    <TextView
+        android:id="@+id/tv_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="matrix 2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+        <TableRow
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+
+            <EditText
+                android:id="@+id/et_five"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="5"
+                />
+            <EditText
+                android:id="@+id/et_six"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="6"
+                />
+
+        </TableRow>
+        <TableRow
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+
+            <EditText
+                android:id="@+id/et_seven"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="7"
+                />
+            <EditText
+                android:id="@+id/et_eight"
+                android:layout_width="90sp"
+                android:layout_height="90sp"
+                android:layout_column="1"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="8"
+                />
+
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/btn_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text ="get answer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
